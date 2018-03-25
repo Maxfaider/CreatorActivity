@@ -1,12 +1,12 @@
 var connectDatabase = function(database, operations) {
     var request = indexedDB.open(database.name);
     request.onupgradeneeded = function(evt) {
-        database.result = evt.target.result;
-        operations.upgrade(database.result);
+        operations.upgrade(evt.target.result);
     };
     
     request.onsuccess = function(evt) {
-        operations.update(evt.target.result);
+        database.result = evt.target.result;
+        operations.update();
     }
     
     request.onerror = function(evt) {
@@ -15,7 +15,7 @@ var connectDatabase = function(database, operations) {
 }
 
 var readDatabase = function(database, nameStore, operations) {
-    var tx = database.transaction(nameStore, "readonly");
+    var tx = database.result.transaction(nameStore, "readonly");
     var store = tx.objectStore(nameStore);
     var empty = true;
     
@@ -31,8 +31,8 @@ var readDatabase = function(database, nameStore, operations) {
     } 
 }
 
-var writeDatabase = function(database, nameStore, Data, operation) {
-    var tx = database.transaction(nameStore, "readwrite");
+var writeDatabase = function(database, nameStore, data, operation) {
+    var tx = database.result.transaction(nameStore, "readwrite");
     var store = tx.objectStore(nameStore);
     
     store.put(data);

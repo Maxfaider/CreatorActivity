@@ -17,52 +17,50 @@
         <!-- Navegación -->
         <nav class="col col-medium menu-navigation">
             <ul>
-                <li class=menu-navigation-focus><a href="index.html">Dashboard</a></li>
+                <li class="menu-navigation-focus"><a href="index.html">Dashboard</a></li>
                 <li><a href="info.html">Info</a></li>
             </ul>
         </nav>
         <!-- botones de funcionalidad -->
         <nav class="col col-small menu-options">
             <ul>
-                <li>New Activity</li>
+                <li id="btnOpen">New Activity</li>
                 <li>Profile</li>
             </ul>
         </nav>
     </div>
     
+    <!-- add Activity -->
+    <span id="modal" class="modal">
+       <div class="modal-content">
+           <div class="row header">
+               <div class="col col-medium title">New Activity</div>
+               <div class="col col-medium close" id="btnClose">&times;</div>
+           </div>
+           <div class="row inputactivity">
+               <div class="col col-small label">Name:</div>
+               <div class="col col-big"><input class="in-large" id="txtTitle" type="text"></div>
+           </div>
+           <div class="row inputdescription">
+               <div class="col col-large">Descrition:</div>
+               <div class="col col-large"><textarea class="in-large" id="txtDescription"></textarea></div>
+           </div>
+           <div class="row options">
+               <section class="col-right col-short button" id="btnCancel">Cancel</section>
+               <section class="col-right col-short button" id="btnAdd">Add</section>
+           </div>
+       </div>
+   </span>
+    
     <!-- DashBoard -->
-    <div class="row">
-        <div class="col col-small">
-            <section class="activity">
-                <section class="row header">
-                    <section class="col col-big-3">Activity 1</section>
-                    <section class="col options">...</section>
-                </section>
-                <section class="content"></section>
-                <section class="row options">
-                    <section class="col col-big-2">Review</section>
-                    <section class="col col-short button">show</section>
-                </section>
-            </section>
-        </div>
+    <div id="dashboard" class="row">
         
-        <div class="col col-small">
-            <section class="activity">
-                <section class="row header">
-                    <section class="col col-big-3">Activity 2</section>
-                    <section class="col options">...</section>
-                </section>
-                <section class="content"></section>
-                <section class="row options">
-                    <section class="col col-big-2">Review</section>
-                    <section class="col col-short button">show</section>
-                </section>
-            </section>
-        </div>
     </div>
     
     <!-- Footer -->
     
-    
+    <script src="js/components.js"></script>
+    <script src="js/indexedDB.js"></script>
+    <script src="js/databaseIDB.js"></script>
 </body>
 </html>
